@@ -37,13 +37,13 @@
                             <tr>
                                 <th>Plate</th>
                                 <td>
-                                    <input type="text" name="txtPlate" id="txtPlate" maxlength="20">
+                                    <input type="text" name="txtPlate" id="txtPlate" maxlength="20" value="{{ old('txtPlate') }}">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Owner</th>
                                 <td>
-                                    <input type="text" name="txtOwner" id="txtOwner" maxlength="50">
+                                    <input type="text" name="txtOwner" id="txtOwner" maxlength="50" value="{{ old('txtOwner') }}">
                                 </td>
                             </tr>
                             <tr>
@@ -66,11 +66,10 @@
                         </table>
                     </form>
 
-
                     @if($errors->any())
                     <div class="">
                         <ul>
-                            @foreach ($errors->all() as $error)
+                            @foreach($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
