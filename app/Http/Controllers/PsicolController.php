@@ -60,13 +60,15 @@ class PsicolController extends Controller
     public function saveVehicle()
     {
         $data = request()->all();
- 
-        Vehicle::create([
-            'plate' => $data['txtPlate'], 
-            'owner' => $data['txtOwner'],
-            'spaces_id' => $data['cboSpace'],
-        ]);
-        
+        $query = 'SELECT id FROM vehicles WHERE plate = ?';
+        $vehicle = DB::select($query, [$data['txtPlate']]);
+        if(empty($vehicle)){
+            Vehicle::create([
+                'plate' => $data['txtPlate'], 
+                'owner' => $data['txtOwner'],
+                'spaces_id' => $data['cboSpace'],
+            ]);
+        }
         return redirect('vehicles');
     }
 }
