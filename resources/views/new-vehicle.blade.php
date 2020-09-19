@@ -31,7 +31,7 @@
                 <br>
                 <br>
                 <div style="left: 100px; margin-left: 150px;">
-                    <form method="post" action="{{ url('new-vehicle') }}">
+                    <form id="frmRegister" method="post" action="{{ url('new-vehicle') }}">
                         {{ csrf_field() }}
                         <table>
                             <tr>
@@ -59,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <button type="submit">Save record</button>
+                                    <button type="submit" id="btnSubmit">Save record</button>
                                     <button type="reset">Reset</button>
                                 </td>
                             </tr>
@@ -74,7 +74,20 @@
         <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
         <script>
             $(function(){
-                
+                $('#frmRegister').on('submit', function(event){
+                    var plate = $('#txtPlate');
+                    var owner = $('#txtOwner');
+                    var space = $('#cboSpace');
+                    if(plate.val().trim().length === 0){
+                        event.preventDefault();
+                    }
+                    if(owner.val().trim().length === 0){
+                        event.preventDefault();
+                    }
+                    if(space.val() === 'Select an option'){
+                        event.preventDefault();  
+                    }
+                });
             });
         </script>
     </body>
