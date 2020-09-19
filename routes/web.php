@@ -16,3 +16,7 @@ Route::get('/', 'PsicolController@home');
 Route::get('/spaces', 'PsicolController@spaces');
 
 Route::get('/vehicles', 'PsicolController@vehicles');
+
+Route::get('/new-vehicle', 'PsicolController@newvehicle');
+
+Route::post('/new-vehicle', 'PsicolController@savevehicle');

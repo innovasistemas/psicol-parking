@@ -26,7 +26,6 @@
                     <a href="/spaces">Spaces</a>
                     <a href="/vehicles">Vehicles</a>
                     <a href="/new-vehicle">New vehicle</a>
-                    <a href="/assign-vehicle-space">Assign vehicle to space</a>
                 </div>
                 <small>You are in {{ $subTitle }}</small>
                 <br>
@@ -43,8 +42,8 @@
                         <tr>
                             <td style="width: 50px">{{ $vehicle->id }}</td>
                             <td style="width: 300px;"> {{ $vehicle->plate }} </td>
-                            <td style="width: 400px;"> {{ $vehicle->owner }} </td>
-                            <td style="width: 200px;"> {{ $vehicle->description }} </td>
+                            <td style="width: 300px;"> {{ $vehicle->owner }} </td>
+                            <td style="width: 300px;"> {{ $vehicle->description }} </td>
                         </tr>
                         @empty
                         <tr>

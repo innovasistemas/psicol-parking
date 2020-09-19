@@ -31,22 +31,38 @@ class PsicolController extends Controller
     
     public function vehicles()
     {
-        
-//         $query = 'SELECT id FROM professions WHERE description = ?';
-////        $profession = DB::select($query, ['Desarrollador back-end']);
-//        $profession = DB::select($query, [$title]);
-//        return $profession;
-//        return $profession[0]->id;
-        
         $query = 'SELECT vehicles.*, spaces.description 
                   FROM spaces INNER JOIN vehicles 
                   ON spaces.id=spaces_id';
-        $vehicle = DB::select($query);
+        $vehicles = DB::select($query);
         
         return view('vehicles')
             ->with('title', PsicolController::$title)
             ->with('subTitle', 'Vehicles')
-            ->with('vehicles', $vehicle);
-//            ->with('vehicles', Vehicle::all());
+            ->with('vehicles', $vehicles);
+    }
+    
+    
+    public function newVehicle()
+    {
+        return view('new-vehicle')
+            ->with('title', PsicolController::$title)
+            ->with('subTitle', 'New Vehicle')
+            ->with('spaces', Space::all());
+    }
+    
+    
+    public function saveVehicle()
+    {
+        $data = request()->all();
+//        var_dump($data);exit;
+//        $arrayData = ['description' => $title];
+//        return Profession::create($arrayData);
+ 
+        return Vehicle::create([
+            'plate' => $data['txtPlate'], 
+            'owner' => $data['txtOwner'],
+            'spaces_id' => $data['cboSpace'],
+        ]);
     }
 }

@@ -6,6 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Space extends Model
 {
-    //protected $table = 'spaces';
-    //protected $fillable = ['description'];
+    
 }

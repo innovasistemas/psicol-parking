@@ -26,7 +26,6 @@
                     <a href="/spaces">Spaces</a>
                     <a href="/vehicles">Vehicles</a>
                     <a href="/new-vehicle">New vehicle</a>
-                    <a href="/assign-vehicle-space">Assign vehicle to space</a>
                 </div>
                 <small>You are in {{ $subTitle }}</small>
                 <br>
@@ -37,12 +36,16 @@
                             <th>Id</th>
                             <th>Description</th>
                         </tr>
-                        @foreach($spaces as $space)
+                        @forelse($spaces as $space)
                         <tr>
                             <td style="width: 100px">{{ $space->id }}</td>
                             <td style="width: 500px;"> {{ $space->description }} </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <th colspan="2">No records found</th>
+                        </tr>
+                        @endforelse
                     </table>
                 </div>
             </div>

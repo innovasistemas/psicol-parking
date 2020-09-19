@@ -26,12 +26,11 @@
                     <a href="/spaces">Spaces</a>
                     <a href="/vehicles">Vehicles</a>
                     <a href="/new-vehicle">New vehicle</a>
-                    <a href="/assign-vehicle-space">Assign vehicle to space</a>
                 </div>
                 <small>You are in {{ $subTitle }}</small>
                 <br>
                 <br>
-                <div>
+                <div style="left: 100px; margin-left: 50px;">
                     
                 </div>
             </div>
