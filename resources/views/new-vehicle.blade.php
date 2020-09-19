@@ -37,20 +37,19 @@
                             <tr>
                                 <th>Plate</th>
                                 <td>
-                                    <input type="text" name="txtPlate" id="txtPlate" maxlength="20" value="{{ old('txtPlate') }}">
+                                    <input type="text" name="plate" id="txtPlate" maxlength="20" value="{{ old('plate') }}" placeholder="Plate">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Owner</th>
                                 <td>
-                                    <input type="text" name="txtOwner" id="txtOwner" maxlength="50" value="{{ old('txtOwner') }}">
+                                    <input type="text" name="owner" id="txtOwner" maxlength="50" value="{{ old('owner') }}" placeholder="Owner">
                                 </td>
                             </tr>
                             <tr>
                                 <th>Space</th>
                                 <td>
-                                    <select name="cboSpace" id="cboSpace" style="width: 180px;">
-                                        <!--<option value="0">Select an option</option>-->
+                                    <select name="space" id="cboSpace" style="width: 180px;">
                                         @foreach($spaces as $space)
                                         <option value="{{ $space->id }}">{{ $space->description }}</option>
                                         @endforeach

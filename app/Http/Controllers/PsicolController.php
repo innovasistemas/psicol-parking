@@ -61,17 +61,17 @@ class PsicolController extends Controller
     {
         $data = request()->all();
         $data = request()->validate([
-            'txtPlate' => 'required|max:10|min:6',
-            'txtOwner' => 'required|max:50|min:3',
-            'cboSpace' => 'required',
+            'plate' => 'required|max:10|min:6|unique:vehicles,plate',
+            'owner' => 'required|max:50|min:3',
+            'space' => 'required|unique:vehicles,spaces_id',
         ]);
-        $query = 'SELECT id FROM vehicles WHERE plate = ?';
-        $vehicle = DB::select($query, [$data['txtPlate']]);
-        if(empty($vehicle)){
+        $query = 'SELECT id FROM spaces WHERE id = ?';
+        $space = DB::select($query, [$data['space']]);
+        if(!empty($space)){
             Vehicle::create([
-                'plate' => $data['txtPlate'], 
-                'owner' => $data['txtOwner'],
-                'spaces_id' => $data['cboSpace'],
+                'plate' => $data['plate'], 
+                'owner' => $data['owner'],
+                'spaces_id' => $data['space'],
             ]);
         }
         return redirect('vehicles');
