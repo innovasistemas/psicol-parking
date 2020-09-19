@@ -45,24 +45,28 @@ class PsicolController extends Controller
     
     public function newVehicle()
     {
+        $query = 'SELECT * 
+                  FROM spaces 
+                  WHERE id NOT IN (SELECT spaces_id FROM vehicles)
+                 ';
+        $spaces = DB::select($query);
         return view('new-vehicle')
             ->with('title', PsicolController::$title)
             ->with('subTitle', 'New Vehicle')
-            ->with('spaces', Space::all());
+            ->with('spaces', $spaces);
     }
     
     
     public function saveVehicle()
     {
         $data = request()->all();
-//        var_dump($data);exit;
-//        $arrayData = ['description' => $title];
-//        return Profession::create($arrayData);
  
-        return Vehicle::create([
+        Vehicle::create([
             'plate' => $data['txtPlate'], 
             'owner' => $data['txtOwner'],
             'spaces_id' => $data['cboSpace'],
         ]);
+        
+        return redirect('vehicles');
     }
 }
