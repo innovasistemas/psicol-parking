@@ -60,6 +60,11 @@ class PsicolController extends Controller
     public function saveVehicle()
     {
         $data = request()->all();
+        $data = request()->validate([
+            'txtPlate' => 'required|max:10|min:6',
+            'txtOwner' => 'required|max:50|min:3',
+            'cboSpace' => 'required',
+        ]);
         $query = 'SELECT id FROM vehicles WHERE plate = ?';
         $vehicle = DB::select($query, [$data['txtPlate']]);
         if(empty($vehicle)){

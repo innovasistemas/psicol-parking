@@ -50,7 +50,7 @@
                                 <th>Space</th>
                                 <td>
                                     <select name="cboSpace" id="cboSpace" style="width: 180px;">
-                                        <option value="Select an option">Select an option</option>
+                                        <!--<option value="0">Select an option</option>-->
                                         @foreach($spaces as $space)
                                         <option value="{{ $space->id }}">{{ $space->description }}</option>
                                         @endforeach
@@ -65,6 +65,17 @@
                             </tr>
                         </table>
                     </form>
+
+
+                    @if($errors->any())
+                    <div class="">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -84,7 +95,7 @@
                     if(owner.val().trim().length === 0){
                         event.preventDefault();
                     }
-                    if(space.val() === 'Select an option'){
+                    if(space.val().trim().length === 0){
                         event.preventDefault();  
                     }
                 });
