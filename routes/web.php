@@ -20,3 +20,5 @@ Route::get('/vehicles', 'PsicolController@vehicles');
 Route::get('/new-vehicle', 'PsicolController@newvehicle');
 
 Route::post('/new-vehicle', 'PsicolController@savevehicle');
+
+Route::delete('/delete-vehicle/{id}', 'PsicolController@deletevehicle');
