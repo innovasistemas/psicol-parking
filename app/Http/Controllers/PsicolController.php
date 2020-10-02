@@ -10,7 +10,7 @@ use App\Models\Vehicle;
 
 class PsicolController extends Controller
 {
-    public static $title = 'Psicol Parking';
+    public static $title = 'Parking';
     public static $menu = [
         '' => 'Home',
         'spaces' => 'Spaces',

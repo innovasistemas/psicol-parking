@@ -31,6 +31,7 @@
                             <th>Plate</th>
                             <th>Owner</th>
                             <th>Space</th>
+                            <th>Update</th>
                             <th>Remove</th>
                         </tr>
                         @forelse($vehicles as $vehicle)
@@ -39,6 +40,13 @@
                             <td style="width: 300px;"> {{ $vehicle->plate }} </td>
                             <td style="width: 300px;"> {{ $vehicle->owner }} </td>
                             <td style="width: 300px;"> {{ $vehicle->description }} </td>
+                            <td style="width: 300px;">
+                                <form method="post" action="{{ url("/update-vehicle/{$vehicle->id}") }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit">Update</button>
+                                </form>
+                            </td>
                             <td style="width: 300px;">
                                 <form method="post" action="{{ url("/delete-vehicle/{$vehicle->id}") }}">
                                     {{ csrf_field() }}
